@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 443310678302933062}
-  - component: {fileID: 5164291319484605854}
+  - component: {fileID: 3435956269506639657}
   m_Layer: 0
-  m_Name: Node
+  m_Name: Node-Dice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 651103255273697389}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5164291319484605854
+--- !u!114 &3435956269506639657
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3791286239032140904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b7524275856024488321c6f22a65161, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c2a946f9605ad040b35b0d1f2919032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _nodeIndex: 0
@@ -111,7 +111,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d1581a5aa26f0d340806af89aff47c25, type: 2}
+  - {fileID: 2100000, guid: ca57a25ca0409314babd91b22514070d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

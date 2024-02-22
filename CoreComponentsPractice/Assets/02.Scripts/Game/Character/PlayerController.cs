@@ -1,7 +1,9 @@
+using DiceGame.Level;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace DiceGame.Character
 {
@@ -9,8 +11,10 @@ namespace DiceGame.Character
     {
         public static PlayerController instance;
 
+        [SerializeField] float _moveSpeed = 1.0f;
+
         public const int DIRECTION_POSITIVE = 1;
-        public const int DIRECTION_NEGATIVE = 1;
+        public const int DIRECTION_NEGATIVE = -1;
 
         // 1 : positive, -1 : negative
         public int direction { get; set; }
@@ -22,7 +26,7 @@ namespace DiceGame.Character
         private float _hp;
         private float _hpMin = 0.0f;
         private float _hpMax = 100.0f;
-        // event ÇÑÁ¤ÀÚ : ¿ÜºÎ Å¬·¡½º¿¡¼­´Â ÀÌ ´ë¸®ÀÚ¸¦ ¾µ ¶§ +=, -= ÀÇ ÇÇ¿¬»êÀÚ·Î¸¸ »ç¿ë°¡´É
+        //event í•œì •ì : ì™¸ë¶€ í´ë˜ìŠ¤ì—ì„œëŠ” ì´ ëŒ€ë¦¬ìë¥¼ ì“¸ ë•Œ +=, -= ì˜ í”¼ì—°ì‚°ìë¡œë§Œ ì‚¬ìš©ê°€ëŠ¥
         public event Action<float> onHpDepleted;
 
 
@@ -44,7 +48,23 @@ namespace DiceGame.Character
 
         public IEnumerator C_Move(int diceValue)
         {
-            yield return null;
+            for (int i = 0; i < diceValue; i++)
+            {
+                int nextIndex = nodeIndex + direction;
+                if (nextIndex < 0 || nextIndex >= BoardGameMap.nodes.Count)
+                    break;
+
+                float t = 0.0f;
+                while (t < 1.0f)
+                {
+                    transform.position = Vector3.Lerp(BoardGameMap.nodes[nodeIndex].transform.position,
+                                                      BoardGameMap.nodes[nextIndex].transform.position, t); // ctrl + rr  
+                    t += _moveSpeed * Time.deltaTime;
+                    yield return null;
+                }
+                nodeIndex = nextIndex;
+                yield return new WaitForSeconds(1.0f); // 1ì´ˆ ë’¤ì— ì´ë™í•˜ë„ë¡ 
+            }
         }
     }
 }

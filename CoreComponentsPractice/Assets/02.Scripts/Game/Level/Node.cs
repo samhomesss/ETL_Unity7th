@@ -1,4 +1,4 @@
-﻿using DiceGame.Character;
+using DiceGame.Character;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +12,11 @@ namespace DiceGame.Level
 
         [SerializeField] private int _nodeIndex;
 
+
+        private void Awake()
+        {
+            BoardGameMap.Register(this); // 노드 등록  // 처음 시작하자마자 등록해서 관리 되도록 설정
+        }
 
         public virtual void OnPlayerHere()
         {
